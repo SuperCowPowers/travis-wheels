@@ -7,6 +7,7 @@ before_install:
     - sudo apt-get install python-dev
     - sudo apt-get install g++
 install:
+    - pip install boto
     - pip install wheel
     - pip wheel --wheel-dir=wheelhouse cython
     - pip wheel --wheel-dir=wheelhouse pandas

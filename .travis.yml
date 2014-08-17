@@ -1,8 +1,8 @@
 language: python
 env:
     global:
-    - secure: LdXZonRD2GbZXL77j0mWbCbH5F7NotVvDGitzrPIZjYspCSHdikwh9ciZ/s8ya50wF4cYvUj1s2olEsQ1DWNM+EE1g147CoiQfzIsxffkFsSENqoee2zu3iN/wkbQLkxVGu4Ej++bjBHZ8xiJuqJE423tXhrXuUk7AYFmXD5rr4=
-    - secure: YFcBbzjG/10NzqIlT/1931mkLdAjF/8Zjw6cE0Y5zALSpGxKA0h2usREVq1gJvDJ8OuTSy5ESq8KFnasd0fM3Lg8P9VrU8kO8dMgw49OsYuJ+hIE3r7C9DRY1zf+Y9PKYKzucc9oQlmFqGSsQdKBb0A7vC/vRLI5eknf6Y+Xn9c=
+    - secure: ApFQRe0bBZtV67QepeFfr6+nzH64YgQPyn/Kk2nDM3b1mz9ezbYbBHFqyhrBblhO3Ll29lgQZWpMXkD1J+M9QrS3mQPyPhSOawotpt8ngGcxuHB9beGbBZdtLyibGUFBIWaZkHdVNEyAxL/x8JqLq37VzFr3IjUuu3OCn3UmtJk=
+    - secure: g9gf6ERSEGGO9BR1+aKtQ4qNVi6EfF4wkx/1qO8Y0yHduq1jvnHYygH1Ih62eSmE8wqX5Fdo7sKKsqAX/d67opczI2yw4UQbCA78cN71ZLxGyU9XKT7Q3VWx+LdJgEOthtCW/qxvTHryGDLzLmGh1xLMWk7P5qrILNDeWnfiQJE=
 before_install:
     - sudo apt-get install python-dev
     - sudo apt-get install g++
@@ -12,7 +12,7 @@ install:
     - pip wheel --wheel-dir=wheelhouse cython
     #- pip wheel --wheel-dir=wheelhouse pandas
     #- pip wheel --wheel-dir=wheelhouse zerorpc
-script: 
+script:
     - echo 'Wheels are Finished...'
     - env
 after_success:

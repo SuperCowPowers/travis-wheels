@@ -10,8 +10,8 @@ install:
     - pip install boto
     - pip install wheel
     - pip wheel --wheel-dir=wheelhouse cython
-    #- pip wheel --wheel-dir=wheelhouse pandas
-    #- pip wheel --wheel-dir=wheelhouse zerorpc
+    - pip wheel --wheel-dir=wheelhouse pandas
+    - pip wheel --wheel-dir=wheelhouse zerorpc
 script:
     - echo 'Wheels are Finished...'
     - tar cvfz wheelhouse.tar.gz wheelhouse

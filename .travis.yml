@@ -1,0 +1,16 @@
+language: python
+env:
+    global:
+    - secure: LdXZonRD2GbZXL77j0mWbCbH5F7NotVvDGitzrPIZjYspCSHdikwh9ciZ/s8ya50wF4cYvUj1s2olEsQ1DWNM+EE1g147CoiQfzIsxffkFsSENqoee2zu3iN/wkbQLkxVGu4Ej++bjBHZ8xiJuqJE423tXhrXuUk7AYFmXD5rr4=
+    - secure: YFcBbzjG/10NzqIlT/1931mkLdAjF/8Zjw6cE0Y5zALSpGxKA0h2usREVq1gJvDJ8OuTSy5ESq8KFnasd0fM3Lg8P9VrU8kO8dMgw49OsYuJ+hIE3r7C9DRY1zf+Y9PKYKzucc9oQlmFqGSsQdKBb0A7vC/vRLI5eknf6Y+Xn9c=
+before_install:
+    - sudo apt-get install python-dev
+    - sudo apt-get install g++
+install:
+    - pip install wheel
+    - pip wheel --wheel-dir=wheelhouse cython
+    - pip wheel --wheel-dir=wheelhouse pandas
+    - pip wheel --wheel-dir=wheelhouse zerorpc
+after_success:
+    - tar cvfz wheelhouse.tar.gz wheelhouse
+    - python wheel_upload.py

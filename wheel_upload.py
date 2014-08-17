@@ -19,5 +19,5 @@ try:
     # Upload the file
     mykey.set_contents_from_filename('wheelhouse.tar.gz')
 
-except e: # Failure
+except: # Failure
     exit(1)

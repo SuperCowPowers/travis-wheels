@@ -19,5 +19,8 @@ try:
     # Upload the file
     mykey.set_contents_from_filename('wheelhouse.tar.gz')
 
+    # Make sure the file is publicly readable
+    mykey.set_acl('public-read')
+
 except: # Failure
     exit(1)

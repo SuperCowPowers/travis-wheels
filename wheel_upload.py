@@ -17,10 +17,12 @@ try:
         mykey.key = _key
 
     # Upload the file
+    print 'Uploading wheelhouse.tar.gz file...'
     mykey.set_contents_from_filename('wheelhouse.tar.gz')
 
     # Make sure the file is publicly readable
     mykey.set_acl('public-read')
 
-except: # Failure
+except Exception as exc: # Failure
+    print 'Blar: %s' % exc
     exit(1)

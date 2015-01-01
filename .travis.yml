@@ -11,6 +11,10 @@ install:
 - pip wheel --wheel-dir=wheelhouse zerorpc
 script:
 - echo 'Wheels are Finished...'
+- echo 'Creating Tar File...'
+- tar cvfz wheelhouse/wheelhouse.tar.gz wheelhouse/*
+- echo 'Removing Wheels...'
+- rm wheelhouse/*.whl
 deploy:
   provider: s3
   access_key_id: AKIAI7GWEYB3D2J2WWNQ

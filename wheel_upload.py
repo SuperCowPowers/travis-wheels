@@ -18,11 +18,14 @@ try:
 
     # Upload the file
     print 'Uploading wheelhouse.tar.gz file...'
-    mykey.set_contents_from_filename('wheelhouse.tar.gz')
+    mykey.set_contents_from_filename('wheelhouse.tar.gz', policy='public-read')
+    print 'Upload Successful...'
 
     # Make sure the file is publicly readable
-    mykey.set_acl('public-read')
+    # print 'Changing Key to public read...'
+    # mykey.set_acl('public-read')
+    # print 'Changing Key to public read successful...'
 
 except Exception as exc: # Failure
-    print 'Blar: %s' % exc
+    print 'Exception: %s' % exc
     exit(1)

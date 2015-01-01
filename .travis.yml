@@ -1,18 +1,26 @@
 language: python
 env:
-    global:
-    - secure: ApFQRe0bBZtV67QepeFfr6+nzH64YgQPyn/Kk2nDM3b1mz9ezbYbBHFqyhrBblhO3Ll29lgQZWpMXkD1J+M9QrS3mQPyPhSOawotpt8ngGcxuHB9beGbBZdtLyibGUFBIWaZkHdVNEyAxL/x8JqLq37VzFr3IjUuu3OCn3UmtJk=
-    - secure: g9gf6ERSEGGO9BR1+aKtQ4qNVi6EfF4wkx/1qO8Y0yHduq1jvnHYygH1Ih62eSmE8wqX5Fdo7sKKsqAX/d67opczI2yw4UQbCA78cN71ZLxGyU9XKT7Q3VWx+LdJgEOthtCW/qxvTHryGDLzLmGh1xLMWk7P5qrILNDeWnfiQJE=
+  global:
+  - secure: ApFQRe0bBZtV67QepeFfr6+nzH64YgQPyn/Kk2nDM3b1mz9ezbYbBHFqyhrBblhO3Ll29lgQZWpMXkD1J+M9QrS3mQPyPhSOawotpt8ngGcxuHB9beGbBZdtLyibGUFBIWaZkHdVNEyAxL/x8JqLq37VzFr3IjUuu3OCn3UmtJk=
+  - secure: g9gf6ERSEGGO9BR1+aKtQ4qNVi6EfF4wkx/1qO8Y0yHduq1jvnHYygH1Ih62eSmE8wqX5Fdo7sKKsqAX/d67opczI2yw4UQbCA78cN71ZLxGyU9XKT7Q3VWx+LdJgEOthtCW/qxvTHryGDLzLmGh1xLMWk7P5qrILNDeWnfiQJE=
 before_install:
-    - sudo apt-get install python-dev
-    - sudo apt-get install g++
+- sudo apt-get install python-dev
+- sudo apt-get install g++
 install:
-    - pip install boto
-    - pip install wheel
-    - pip wheel --wheel-dir=wheelhouse cython
-    - pip wheel --wheel-dir=wheelhouse pandas
-    - pip wheel --wheel-dir=wheelhouse zerorpc
+- pip install boto
+- pip install wheel
+- pip wheel --wheel-dir=wheelhouse cython
+- pip wheel --wheel-dir=wheelhouse pandas
+- pip wheel --wheel-dir=wheelhouse zerorpc
 script:
-    - echo 'Wheels are Finished...'
-    - tar cvfz wheelhouse.tar.gz wheelhouse
-    - python wheel_upload.py
+- echo 'Wheels are Finished...'
+deploy:
+  provider: s3
+  access_key_id: AKIAI7GWEYB3D2J2WWNQ
+  secret_access_key:
+    secure: P+kiJCdMgEL9IWcXCRbniOlRBS4mqaMmbPRBWfGF1c8bxpoO0YJnlwEsdiEpER+eQTuTdps29WN63FuN6eaALtLkIJ3DIzkp+TiqYHVm1RoypS7PTD6NbKau0cJa4eveEpW1PdLpRSlETUhFqBcA8TLRI6ud4trnKNWvmDEJEHU=
+  bucket: workbench-wheels
+  local-dir: wheelhouse
+  acl: public_read
+  on:
+    repo: SuperCowPowers/travis-wheels
